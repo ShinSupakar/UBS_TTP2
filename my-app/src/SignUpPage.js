@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, TextField, Checkbox, FormControlLabel, Button } from '@mui/material';
+import { Container, TextField, Button, Typography, Box, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const SignUpPage = () => {
     ethnicity: '',
     jobRole: '',
     department: '',
-    interests: [],
+    interests: '',
     learningStyle: '',
     languagePreference: ''
   });
@@ -20,21 +21,6 @@ const SignUpPage = () => {
       ...prevData,
       [name]: value
     }));
-  };
-
-  const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    if (checked) {
-      setFormData(prevData => ({
-        ...prevData,
-        interests: [...prevData.interests, name]
-      }));
-    } else {
-      setFormData(prevData => ({
-        ...prevData,
-        interests: prevData.interests.filter(interest => interest !== name)
-      }));
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -48,16 +34,23 @@ const SignUpPage = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{ padding: '16px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+      <Typography variant="h4" sx={{ color: '#e60000', fontWeight: 'bold', marginBottom: '16px' }}>Complete Your Profile</Typography>
       <form onSubmit={handleSubmit}>
-        <TextField
-          fullWidth
-          label="Age Group"
-          name="ageGroup"
-          value={formData.ageGroup}
-          onChange={handleChange}
-          margin="normal"
-        />
+        <FormControl fullWidth margin="normal" variant="outlined">
+          <InputLabel>Age Group</InputLabel>
+          <Select
+            label="Age Group"
+            name="ageGroup"
+            value={formData.ageGroup}
+            onChange={handleChange}
+          >
+            <MenuItem value="20-30">20-30</MenuItem>
+            <MenuItem value="30-40">30-40</MenuItem>
+            <MenuItem value="40-50">40-50</MenuItem>
+            <MenuItem value="50-60">50-60</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           fullWidth
           label="Gender Identity"
@@ -65,16 +58,71 @@ const SignUpPage = () => {
           value={formData.genderIdentity}
           onChange={handleChange}
           margin="normal"
+          variant="outlined"
         />
-        {/* Other input fields */}
-        <FormControlLabel
-          control={<Checkbox checked={formData.interests.includes('Diversity and Inclusion')} onChange={handleCheckboxChange} name="Diversity and Inclusion" />}
-          label="Diversity and Inclusion"
+        <TextField
+          fullWidth
+          label="Ethnicity"
+          name="ethnicity"
+          value={formData.ethnicity}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
         />
-        {/* Other checkboxes */}
-        <Button type="submit" variant="contained" color="primary">
-          Submit
-        </Button>
+        <TextField
+          fullWidth
+          label="Job Role"
+          name="jobRole"
+          value={formData.jobRole}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
+        />
+        <TextField
+          fullWidth
+          label="Department"
+          name="department"
+          value={formData.department}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
+        />
+        <TextField
+          fullWidth
+          label="Interests"
+          name="interests"
+          value={formData.interests}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
+        />
+        <TextField
+          fullWidth
+          label="Learning Style"
+          name="learningStyle"
+          value={formData.learningStyle}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
+        />
+        <TextField
+          fullWidth
+          label="Language Preference"
+          name="languagePreference"
+          value={formData.languagePreference}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
+        />
+        
+        {/* Add additional fields as needed */}
+        <Box sx={{ marginTop: '16px', display: 'flex', justifyContent: 'space-between' }}>
+          <Link to="/newscreen" style={{ textDecoration: 'none' }}>
+            <Button type="submit" variant="contained" sx={{ backgroundColor: '#e60000', color: 'white', fontWeight: 'bold' }}>
+              Submit
+            </Button>
+          </Link>
+        </Box>
       </form>
     </Container>
   );
