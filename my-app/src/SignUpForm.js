@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, TextField, Button, Stack, Typography, Box, Grid } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -17,10 +18,20 @@ const SignUpForm = () => {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add code to handle form submission (e.g., send data to backend)
-    console.log(formData);
+    try {
+      await axios.post(
+        "http://localhost:8443/api/signup",
+        formData,
+        { headers: { 'Content-Type': 'application/json'}}
+      )
+      navigate("/signup")
+    }
+    catch (error) {
+      alert(error.response.data['error'])
+    }
   };
 
   // const handleSubmit = async (e) => {
@@ -81,17 +92,15 @@ const SignUpForm = () => {
               margin="normal"
               variant="outlined"
             />
-            
             <Stack spacing={2} direction="row" justifyContent="space-between" sx={{ marginTop: '16px' }}>
-            <Link to="/signup" style={{ textDecoration: 'none' }}>
               <Button
                 type="submit"
                 variant="contained"
                 sx={{ backgroundColor: '#e60000', color: 'white', fontWeight: 'bold' }}
+                onSubmit={handleSubmit}
               >
                 Sign Up
               </Button>
-            </Link>
               <Link to="/login" style={{ textDecoration: 'none' }}>
                 <Button
                   variant="text"
