@@ -3,6 +3,7 @@ import React from 'react';
 import { Box, Typography, Grid, Card, CardContent, CardMedia, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import TaskBarComponent from './components/TaskBarComponent';
 
 const CustomContentPage = () => {
   return (
@@ -15,24 +16,7 @@ const CustomContentPage = () => {
       }}
     >
       {/* Taskbar */}
-      <Box sx={{ width: '100%', padding: '8px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: 'white', }}>The Diversity Forum</Typography>
-        <Box>
-        <Link to="/newscreen" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Home</Button>
-        </Link>
-        <Link to="/profile" style={{ textDecoration: 'none' }}>
-          <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Profile</Button>
-        </Link>
-        <Link to="/inclusive-resources" style={{ textDecoration: 'none' }}>
-          <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Initiatives</Button>          
-        </Link>
-        <Link to="/forum" style={{ textDecoration: 'none' }}>
-          <Button sx={{ color: 'white', marginRight: '16px' , textTransform: 'none'}}>Get Involved</Button>
-        </Link>
-          <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Settings</Button>
-        </Box>
-      </Box>
+      <TaskBarComponent />
 
       <Box
         sx={{

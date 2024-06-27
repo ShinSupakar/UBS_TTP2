@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, Paper, List, ListItem, ListItemText, Grid, Card, CardContent, Button, Menu, MenuItem } from '@mui/material';
 import { Link } from 'react-router-dom';
+import TaskBarComponent from './components/TaskBarComponent';
 
 const genderDictionary = [
   { term: 'Cisgender', definition: 'A person whose gender identity matches their sex assigned at birth.' },
@@ -35,58 +36,11 @@ const InclusiveResourcesPage = () => {
   };
 
   return (
-    <Box sx={{ padding: '16px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
+    <Box sx={{ backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       {/* Taskbar */}
-      <Box 
-        sx={{ 
-          width: '100%', 
-          padding: '8px 16px', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          position: 'fixed',
-          top: 0,
-          left: 0,  // Ensure the taskbar starts from the left edge
-          right: 0,  // Ensure the taskbar extends to the right edge
-          zIndex: 1000,
-          margin: 0, // Remove any default margin
-        }}
-      >
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: 'white' }}>The Diversity Forum</Typography>
-        <Box>
-          <Link to="/newscreen" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Home</Button>
-          </Link>
-          <Link to="/profile" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Profile</Button>
-          </Link>
-          <Link to="/forum" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Get Involved</Button>
-          </Link>
-          <Button
-            sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}
-            aria-controls="settings-menu"
-            aria-haspopup="true"
-            onClick={handleSettingsClick}
-          >
-            Settings
-          </Button>
-          <Menu
-            id="settings-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleSettingsClose}
-          >
-            <MenuItem onClick={handleSettingsClose}>Account</MenuItem>
-            <MenuItem onClick={handleSettingsClose}>Preferences</MenuItem>
-            <MenuItem onClick={handleSettingsClose}>Log Out</MenuItem>
-          </Menu>
-        </Box>
-      </Box>
+      <TaskBarComponent />
 
-      <Box sx={{ paddingTop: '80px' }}>
+      <Box sx={{ padding: '80px 16px 16px 16px', }}>
         {/* Gender Dictionary */}
         <Paper sx={{ padding: '16px', marginBottom: '16px' }}>
           <Typography variant="h4" sx={{ color: '#e60000', fontWeight: 'bold', marginBottom: '16px' }}>Gender Dictionary</Typography>

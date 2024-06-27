@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button, List, ListItem, ListItemText, Paper, Divider, Avatar, IconButton, Tooltip } from '@mui/material';
-import { Link } from 'react-router-dom';
+import TaskBarComponent from './components/TaskBarComponent';
 
 const ForumPage = () => {
   const [messages, setMessages] = useState([
@@ -32,40 +32,12 @@ const ForumPage = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: '16px',
         backgroundColor: '#f5f5f5',
         minHeight: '100vh',
       }}
     >
       {/* Taskbar */}
-      <Box 
-        sx={{ 
-          width: '100%', 
-          padding: '8px 16px', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          position: 'fixed',
-          top: 0,
-          zIndex: 1000,
-        }}
-      >
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: 'white' }}>The Diversity Forum</Typography>
-        <Box>
-          <Link to="/newscreen" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none'}}>Home</Button>
-          </Link>
-          <Link to="/profile" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px' , textTransform: 'none'}}>Profile</Button>
-          </Link>
-          <Link to="/inclusive-resources" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Initiatives</Button>          
-          </Link>
-          <Button sx={{ color: 'white', marginRight: '16px' , textTransform: 'none'}}>Get Involved</Button>
-          <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Settings</Button>
-        </Box>
-      </Box>
+      <TaskBarComponent />
 
       <Paper sx={{ padding: '32px', marginTop: '80px', maxWidth: '800px', width: '100%' }}>
         <Typography variant="h4" sx={{ color: '#e60000', fontWeight: 'bold', marginBottom: '16px' }}>Community Forum</Typography>

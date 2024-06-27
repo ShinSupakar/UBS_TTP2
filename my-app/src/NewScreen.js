@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import TaskBarComponent from './components/TaskBarComponent';
 
 const NewScreen = () => {
   const navigate = useNavigate();
@@ -27,21 +28,7 @@ const NewScreen = () => {
       }}
     >
       {/* Taskbar */}
-      <Box sx={{ width: '100%', padding: '8px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
-        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>The Diversity Forum</Typography>
-        <Box>
-          <Link to="/profile" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Profile</Button>
-          </Link>
-          <Link to="/inclusive-resources" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Initiatives</Button>          
-          </Link>
-          <Link to="/forum" style={{ textDecoration: 'none' }}>
-            <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Get Involved</Button>
-          </Link>
-          <Button sx={{ color: 'white', marginRight: '16px', textTransform: 'none' }}>Settings</Button>
-        </Box>
-      </Box>
+      <TaskBarComponent />
       {/* Main content */}
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '16px', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
         <Typography variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'white', mb: 2 }}>
