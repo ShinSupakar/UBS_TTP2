@@ -1,14 +1,16 @@
 # app.py
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/mydatabase'
+CORS(app)
 mongo = PyMongo(app)
 
 users_collection = mongo.db.users
 
-@app.route('/signup', methods=['POST'])
+@app.route('/api/signup', methods=['POST'])
 def signup():
     data = request.get_json()
     username = data.get('username')
@@ -58,4 +60,4 @@ def signup_extended():
     return jsonify({'message': 'User signed up successfully'}), 201
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8443)
